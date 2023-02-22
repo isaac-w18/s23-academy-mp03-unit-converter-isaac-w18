@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var input: Double = 0.0
-    @State private var inputUnit = ""
-    @State private var outputUnit = ""
+    @State private var inputUnit = "mL"
+    @State private var outputUnit = "mL"
     
     let units = ["mL", "Liters", "Cups", "Pints", "Gallons"]
     let conversions = ["mL": 1.0,
@@ -31,6 +31,7 @@ struct ContentView: View {
                     TextField("Input Value",
                               value: $input,
                               format: .number)
+                    .keyboardType(.decimalPad)
                     Picker("Input Units", selection: $inputUnit) {
                         Text("mL").tag("mL")
                         Text("Liters").tag("Liters")
@@ -57,9 +58,7 @@ struct ContentView: View {
                 }
                 
                 Section {
-//                    TextField("\(output)",
-//                              value: output,
-//                              format: .number)
+                    Text("\(output)")
                 } header: {
                     Text("Output")
                 }
